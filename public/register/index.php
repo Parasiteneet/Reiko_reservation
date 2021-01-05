@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+  <div class="header-warapper">
+    <img src="Applications/MAMP/htdocs/reiko/img/bedbug-silhouette.jpg" alt="">
+  </div>
+</header>
   
 
   <script src="js/main.js"></script>
