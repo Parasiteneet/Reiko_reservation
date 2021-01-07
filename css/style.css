@@ -1,4 +1,27 @@
-#main-pic {
-  height: 50px;
-  width: 50px;
+* {
+  margin:0;
+  padding:0;
 }
+
+body {
+  height:1080px;
+  width: 100%;
+}
+
+.header-warapper {
+  text-align: center;
+}
+
+.header-warapper p {
+  margin-top:10px;
+}
+
+#main-pic {
+  height: 150px;
+  width: 150px;
+}
+
+.reg-content  {
+  display:flex;
+}
+
