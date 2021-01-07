@@ -1,6 +1,6 @@
 * {
-  margin:0;
-  padding:0;
+  margin: 0; 
+  padding: 0;
 }
 
 body {
@@ -8,8 +8,11 @@ body {
   width: 100%;
 }
 
+
+
 .header-warapper {
   text-align: center;
+  padding-top: 30px;
 }
 
 .header-warapper p {
@@ -21,7 +24,41 @@ body {
   width: 150px;
 }
 
-.reg-content  {
-  display:flex;
+
+.register {
+  width:100%;
+  text-align: center;
+  margin-top: 50px;
 }
 
+.name {
+  cursor: pointer; 
+  height:30px; 
+  width: 200px;
+  font-size: 100%;
+}
+
+.email {
+ cursor: pointer; 
+ height:30px; 
+ width: 200px;
+ font-size: 100%;
+}
+
+.pin {
+  cursor: pointer; 
+  height:30px; 
+  width: 200px;
+  font-size: 100%;
+}
+
+#submit {
+  margin-top: 30px;
+}
+
+.sub {
+  background: rgb(124, 110, 214);
+  border-radius: 5%;
+  cursor: pointer; 
+  color:white;
+}

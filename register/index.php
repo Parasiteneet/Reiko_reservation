@@ -14,27 +14,26 @@
     <p>貝沼 麗子のご予約サイトへようこそ。</p>
     <p>My passion is ~~~</p>
     <p>I serve hospitality ~~~</p>
-    <p>You can be consulted whennever you'd like to</p>
+    <p>You can be consulted whenever you'd like to</p>
   </div>
 </header>
 <main>
   <div class="register">
-    <div class="reg-content">
-       <p>名前</p>
-       <p>メールアドレス</p>
-       <p>パスワード</p>
-    </div> 
-    <form action="" class="reg-form">
-        <input type="text" name="name" class="input_box">        
-        <input type="text" name="email" class="input_box">
-        <input type="text" name="pin" class="input_box">            
+    <form action="check.php" method="post">
+      <div class="centerform">
+        名前：<input type="text" name="name" placeholder="名前" class="name">
+        メールアドレス：<input type="text" name="email"  placeholder="メールアドレス" class="email">
+        パスワード：<input type="password" name="pin"  placeholder="パスワード" class="pin">
+        <div id="submit"><input type="submit" value="入力内容を確認する" class="sub"></div>            
+      </div>
     </form>
   </div>
-
 </main>
 
 
-  <h1></h1>
+
+
+
 
   <script src="../js/main.js"></script>
 </body>
