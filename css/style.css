@@ -19,26 +19,38 @@ body {
   margin-top:10px;
 }
 
+.reserve-link {
+  text-align: center;
+  padding-top: 30px;
+}
+
 #main-pic {
   height: 150px;
   width: 150px;
+}
+
+.main-prof {
+  margin-top: 30px;
 }
 
 
 .register {
   width:100%;
   text-align: center;
-  margin-top: 50px;
+  padding-top: 300px;
 }
 
 .name {
+ 
   cursor: pointer; 
   height:30px; 
   width: 200px;
   font-size: 100%;
 }
 
+/* email　全て入力できるようにする */
 .email {
+padding-right: 50px;
  cursor: pointer; 
  height:30px; 
  width: 200px;
@@ -53,12 +65,35 @@ body {
 }
 
 #submit {
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
+/* hover　後でつける */
 .sub {
+  height: 50px;
+  width: 150px;
   background: rgb(124, 110, 214);
   border-radius: 5%;
   cursor: pointer; 
   color:white;
+}
+
+
+.reserve-link {
+  line-height: 50px;
+  /* 
+  height:100px;
+  width:500px;
+  border : 2px solid rgb(240, 144, 240); */
+  
+} 
+
+.back-color {
+  background-color:yellow;
+}
+
+/* reserve.php */
+.requiredText {
+  line-height: 200px;
+  text-align: center;
 }
