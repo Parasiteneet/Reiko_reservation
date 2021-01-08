@@ -1,3 +1,6 @@
+<?php 
+require('../app/dbconnect.php');
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -17,7 +20,7 @@
     <div class="main-prof">
       <p>貝沼 麗子のご予約サイトへようこそ。</p>
       <p>My passion is ~~~</p>
-      <p>I serve hospitality ~~~</p>
+      <p>I serve you hospitality ~~~</p>
       <p>You can be consulted whenever you'd like to</p>
     </div>
   </div>
