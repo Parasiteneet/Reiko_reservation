@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <?php echo 'hello world'; ?>
+  <?php echo 'Thank you for register mate!'; ?>
 
 
   <script src="../js/main.js"></script>
