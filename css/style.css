@@ -8,8 +8,7 @@ body {
   width: 100%;
 }
 
-
-
+/* index.php */
 .header-warapper {
   text-align: center;
   padding-top: 30px;
@@ -19,9 +18,60 @@ body {
   margin-top:10px;
 }
 
-.reserve-link {
+.login-container {
+  margin-top:50px;
+  height: 170px;
+  width: 100%;
+  background-color: rgb(124, 110, 214);
+  padding-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.login-container label {
+  font-size: 13px;;
+  color:whitesmoke;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  padding-right: 8%;
+}
+
+
+
+
+#index-email {
+  height:30px; 
+  width: 200px;
+  cursor: pointer; 
+}
+
+#index-pin {
+  height:30px; 
+  width: 200px;
+  cursor: pointer; 
+}
+
+#index-login {
+  height: 50px;
+  width: 150px;
+  background: rgb(240, 236, 30);
+  border-radius: 5%;
+  cursor: pointer; 
+  color:white; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.register-link {
   text-align: center;
   padding-top: 30px;
+  line-height: 50px;
+}
+
+.register-link p {
+  font-size: 15px;
 }
 
 #main-pic {
@@ -94,18 +144,10 @@ body {
 }
 
 
-.reserve-link {
-  line-height: 50px;
-  /* 
-  height:100px;
-  width:500px;
-  border : 2px solid rgb(240, 144, 240); */
-  
-} 
-
 .back-color {
   background-color:yellow;
 }
+/* index.php */
 
 /* reserve.php */
 .requiredText {

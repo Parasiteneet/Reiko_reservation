@@ -2,7 +2,9 @@
   session_start();
   require('../app/dbconnect.php');
 
-
+  function h($s) {
+    return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
+  }
 
   if (!empty($_POST)) { //!= NOT NotEmpty の条件になる。
     //入力内容がエラーなく送信された時にという条件を
@@ -58,19 +60,18 @@
   <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
-<?php  var_dump($record); ?>
 
 <div class="register">
   <form action="" method="post">
     <div class="container">
       <div class="item">
-          名前：<input type="text" name="name" size="35" maxlength="255" placeholder="名前" class="name" value="<?php echo htmlspecialchars($_POST['name'], ENT_QUOTES)?>"> 
+          名前：<input type="text" name="name" size="35" maxlength="255" placeholder="名前" class="name" value="<?php echo h($_POST['name'])?>"> 
             <?php if ($error['name'] === 'blank'): ?>
               <script> alert('名前を入力してください'); </script>
             <?php endif; ?>
       </div>
       <div class="item">
-          メールアドレス：<input type="text" name="email" size="35" maxlength="255" placeholder="メールアドレス" class="email" value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES)?>">
+          メールアドレス：<input type="text" name="email" size="35" maxlength="255" placeholder="メールアドレス" class="email" value="<?php echo h($_POST['email'])?>">
             <?php if ($error['email'] === 'blank'): ?>
               <script> alert('メールアドレスを入力してください'); </script>
             <?php endif; ?>
@@ -79,7 +80,7 @@
             <?php endif; ?>
       </div>
       <div class="item">
-          パスワード：<input type="password" name="pin"  size="10" maxlength="20" placeholder="パスワード" class="pin" value="<?php echo htmlspecialchars($_POST['pin'], ENT_QUOTES)?>">
+          パスワード：<input type="password" name="pin"  size="10" maxlength="20" placeholder="パスワード" class="pin" value="<?php echo h($_POST['pin'])?>">
             <?php if ($error['pin'] === 'length'): ?>
               <script> alert('パスワードは4文字以上で入力してください'); </script>
             <?php endif; ?>

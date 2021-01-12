@@ -26,9 +26,23 @@ require('../app/dbconnect.php');
   </div>
 </header>
 <main>
-  <div class="reserve-link">
-    <p>会員登録は<span class="back-color"><a href="reserve.php">コチラ</a></span>からお願いします。</p>
-    <p>すでに登録がお済みの方は<span class="back-color"><a href="../login/login.php">コチラ</a></span>からログインをお願いします。</p>
+  <div class="login-container">
+    <form action="">
+      <label for="index-email" class="label1">メールアドレス</label>      
+      <label for="index-pin" class="label2">パスワード</label> 
+      <br>     
+        <input type="email" name="email" id="index-email">
+        <input type="password" name="pin" id="index-pin">
+      </br>
+      <br>
+        <button type="submit" id="index-login">ログイン</button>
+      </br>
+    </form>
+  </div>
+
+  <div class="register-link">
+    <p>新規会員登録は<span class="back-color"><a href="reserve.php">コチラ</a></span>からお願いします。</p>
+    <!-- <p>すでに登録がお済みの方は<span class="back-color"><a href="../login/login.php">コチラ</a></span>からログインをお願いします。</p> -->
   </div>
 </main>
 
