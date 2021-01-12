@@ -1,5 +1,22 @@
 <?php 
 require('../app/dbconnect.php');
+
+function h($s) {
+  return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
+}
+
+session_start();
+
+
+if (isset($_SESSION['email'])) {
+  echo 'ようこそ'. h($_SESSION['email']) . "さん<br>";
+  echo "<a href='../login/logout.php'>ログアウトはこちら。</a>";
+  exit;
+} else {
+  echo "<script> alert('新規会員登録の方はこのページの下記のリンクから会員登録をお願いします。'); </script>";
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +26,8 @@ require('../app/dbconnect.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reiko reservation</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
 </head>
-<link rel="stylesheet" href="../css/responsive.css">
 <body>
 <header>
   <div class="header-warapper">
@@ -39,7 +56,6 @@ require('../app/dbconnect.php');
       </br>
     </form>
   </div>
-
   <div class="register-link">
     <p>新規会員登録は<span class="back-color"><a href="reserve.php">コチラ</a></span>からお願いします。</p>
     <!-- <p>すでに登録がお済みの方は<span class="back-color"><a href="../login/login.php">コチラ</a></span>からログインをお願いします。</p> -->
