@@ -6,6 +6,7 @@
 body {
   height:1080px;
   width: 100%;
+  user-select: none; 
 }
 
 /* index.php */
@@ -18,9 +19,17 @@ body {
   margin-top:10px;
 }
 
+.error-box {
+  margin-top:3%;
+}
+
+#error-msg {
+  color: red;
+}
+
 .login-container {
   margin-top:50px;
-  height: 170px;
+  height: 200px;
   width: 100%;
   background-color: rgb(124, 110, 214);
   padding-top: 50px;
@@ -36,8 +45,6 @@ body {
   font-weight: bold;
   padding-right: 8%;
 }
-
-
 
 
 #index-email {
@@ -62,6 +69,19 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto
+}
+
+.auto-login {
+  padding-left: 25%;
+  padding-right: 20%;
+}
+
+.auto-login label {
+  cursor: pointer; 
+}
+
+.auto-login input {
+  cursor: pointer; 
 }
 
 .register-link {
