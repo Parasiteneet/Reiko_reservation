@@ -75,7 +75,7 @@ if (!empty($_POST)) {
 
 <main>
   <div class="login-container">
-    <form action="../../corporate-site/calendar.php" method="post">
+    <form action="../corporate-site/calendar.php" method="post">
       <label for="index-email" class="label1">メールアドレス</label>      
       <label for="index-pin" class="label2">パスワード</label> 
       <br>     
