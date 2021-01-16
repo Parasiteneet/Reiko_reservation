@@ -4,7 +4,7 @@
 
   if (!isset($_SESSION['join'])) { 
     //セッションの値が渡ってきているか判断
-    header('Location: reserve.php');
+    header('Location: register.php');
     exit;
   }
 
@@ -18,7 +18,7 @@
 
   unset($_SESSION['join']);//登録後、セッション内のデータを破棄する
 
-  header('Location: thanks.php');
+  header('Location: ../corporate-site/calendar.php');
   exit;
 }
   

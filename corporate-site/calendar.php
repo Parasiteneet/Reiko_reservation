@@ -1,6 +1,16 @@
 <?php 
+  session_start();
+
+  if(!isset($_SERVER['HTTP_REFERER'])){
+    // redirect them to your desired location
+    header('location:../register/index.php');
+    exit;
+    //https://www.it-swarm-ja.tech/ja/php/php%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%B8%E3%81%AE%E7%9B%B4%E6%8E%A5url%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%82%92%E9%98%B2%E6%AD%A2%E3%81%99%E3%82%8B/1056077947/ 参照:
+}
+  
   require 'vendor/autoload.php';
   use Carbon\Carbon;
+
 
   function h($s) {
     return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
@@ -46,7 +56,7 @@
   //<table> と<thead> で曜日をぶちこむ
   $headings = array(
     'Monday','Tuesday','Wednesday','Thursday',
-    'Friday','Saterday', 'Sunday'
+    'Friday','Saturday', 'Sunday'
   );
 
 
@@ -75,7 +85,28 @@
       $calendar .='</tr><tr>'; //月曜日だったら改行する。条件分岐
     }
 
-    $calendar .='<td class="day">'.$dt->day.'</td>';
+    $comp = new Carbon($dt->year."-".$dt->month."-".$dt->day);
+    $comp_now = Carbon::today();
+
+    //eq()二つの日時が同じかをチェックできる。
+    if($comp->eq($comp_now)) {
+      $calendar .='<td class="day" style="background-color:008b8b;">'.$dt->day.'</td>';
+     } else {
+       switch ($dt->format('N')) {
+         case 6:
+           $calendar .='<td class = "day" style="background-color:#b0c0e6">'.$dt->day.'</td>';
+           break;
+         case 7:
+           $calendar .='<td class = "day" style="background-color:#f08080">'.$dt->day.'</td>';
+           break;
+         default:
+           $calendar .='<td class = "day">'.$dt->day.'</td>';
+           break;
+       }
+     }
+
+
+    // $calendar .='<td class="day">'.$dt->day.'</td>';
     $dt->addDay();//次の日を取得する
   }
 

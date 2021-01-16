@@ -29,14 +29,14 @@ if (!empty($_POST)) {
         setcookie('email', $_POST['email'], time() + (20 * 365 * 24 * 60 * 60));
       }
 
-      header('Location: ../register/thanks.php');
+      header('Location: ../corporate-site/calendar.php');
       exit;
-    } else {
+      } else {
       $error['login'] = 'failed';
     }
-  } else {
+      } else {
     $error['login'] = 'blank';
- }
+    }
 }
 
 ?>
@@ -75,7 +75,7 @@ if (!empty($_POST)) {
 
 <main>
   <div class="login-container">
-    <form action="../corporate-site/calendar.php" method="post">
+    <form action="" method="post">
       <label for="index-email" class="label1">メールアドレス</label>      
       <label for="index-pin" class="label2">パスワード</label> 
       <br>     
