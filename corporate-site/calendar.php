@@ -25,14 +25,14 @@
   } else {
     $dt = Carbon::createFromDate();
   }
-  renderCalendar($dt);
+  // renderCalendar($dt);
 
   //それをファンクションにする
   function renderCalendar($dt) {
     $dt->startOfMonth(); // 今月の最初の日を取得
     $dt->timezone = 'Asia/Tokyo';
     // echo $dt;
-  }
+  
 
   //１ヶ月前取得する
   $sub = Carbon::createFromDate($dt->year,$dt->month,$dt->day);
@@ -46,21 +46,32 @@
   $addY = $addMonth->year;
   $addM = $addMonth->month;
 
+   //今月
+   $today = Carbon::createFromDate();
+   $todayY = $today->year;
+   $todayM = $today->month;
+
+
   //前月・来月のリンク 取得した上の二つをパラメータに打ち込む
  //リンク
-  $title = '<caption><a href="./calendar.php?y='.$subY.'&&m='.$subM.'"><<前月 </a>';//前月のリンク
-  $title .= $dt->format('F Y');//月と年を表示
-  $title .= '<a href="./calendar.php?y='.$addY.'&&m='.$addM.'"> 来月>></a></caption>';//来月リンク  
+  // $title = '<caption><a href="./calendar.php?y='.$subY.'&&m='.$subM.'"><<前月 </a>';//前月のリンク
+  // $title .= $dt->format('F Y');//月と年を表示
+  // $title .= '<a href="./calendar.php?y='.$addY.'&&m='.$addM.'"> 来月>></a></caption>';//来月リンク  
+
+  $title  = '<h4>'.$dt->format('F Y').'</h4>';//月と年を表示
+  $title .= '<div class="month"><caption><a class="left" href="./calendar.php?y='.$todayY.'&&m='.$todayM.'">今月</a>';
+  $title .= '<a class="left" href="./calendar.php?y='.$subY.'&&m='.$subM.'"><<前月 </a>';//前月のリンク
+  $title .= '<a class="right" href="./calendar.php?y='.$addY.'&&m='.$addM.'"> 来月>></a></caption></div>';//来月リンク
 
 
   //<table> と<thead> で曜日をぶちこむ
   $headings = array(
-    'Monday','Tuesday','Wednesday','Thursday',
-    'Friday','Saturday', 'Sunday'
+    '月','火','水','木','金','土','日'
   );
 
 
-  $calendar = '<table class = "table" border=1>';
+  // $calendar = '<table class = "table" border=1>';//後でcssで調整する
+  $calendar = '<table class="calendar-table">';
   $calendar .='<thead>'; // .=は連結 <table> + <thead>
   foreach($headings as $heading) {
     $calendar .='<th class="header">'.$heading.'</th>';
@@ -114,7 +125,26 @@
 
   $calendar .='</table>';
 
-  echo $title.$calendar;
+  // echo $title.$calendar;
+  return $title.$calendar;
+  }
 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カレンダー</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="calendar-container">
+    <?php echo renderCalendar($dt); ?>
+</div>
+  
+</body>
+</html>
