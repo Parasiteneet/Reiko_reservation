@@ -101,17 +101,17 @@
 
     //eq()二つの日時が同じかをチェックできる。
     if($comp->eq($comp_now)) {
-      $calendar .='<td class="day" style="background-color:008b8b;">'.$dt->day.'</td>';
+      $calendar .='<td class="day" style="background-color:008b8b;"><a href="reserve.php?y='.$dt->year.'&&m='.$dt->month.'&&d='.$dt->day.'">'.$dt->day.'</a></td>';
      } else {
        switch ($dt->format('N')) {
-         case 6:
-           $calendar .='<td class = "day" style="background-color:#b0c0e6">'.$dt->day.'</td>';
+         case 6://format('N')で取得した土曜日
+           $calendar .='<td class = "day" style="background-color:#b0c0e6"><a href="./reserve.php?y='.$dt->year.'&&m='.$dt->month.'&&d='.$dt->day.'">'.$dt->day.'</a></td>';
            break;
-         case 7:
-           $calendar .='<td class = "day" style="background-color:#f08080">'.$dt->day.'</td>';
+         case 7://format('N')で取得した日曜日
+           $calendar .='<td class = "day" style="background-color:#f08080"><a href="./reserve.php?y='.$dt->year.'&&m='.$dt->month.'&&d='.$dt->day.'">'.$dt->day.'</a></td>';
            break;
          default:
-           $calendar .='<td class = "day">'.$dt->day.'</td>';
+           $calendar .='<td class = "day"><a href="./reserve.php?y='.$dt->year.'&&m='.$dt->month.'&&d='.$dt->day.'">'.$dt->day.'</a></td>';;
            break;
        }
      }

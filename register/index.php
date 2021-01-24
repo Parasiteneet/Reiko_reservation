@@ -57,7 +57,7 @@ if (!empty($_POST)) {
       <img id="main-pic" src="../img/bedbug-silhouette.jpg" alt="">
     </div>
     <div class="main-prof">
-      <p>貝沼 麗子のご予約サイトへようこそ。</p>
+      <p>貝沼 れい子のご予約サイトへようこそ。</p>
       <p>My passion is ~~~</p>
       <p>I serve you hospitality ~~~</p>
       <p>You can be consulted whenever you'd like to</p>
