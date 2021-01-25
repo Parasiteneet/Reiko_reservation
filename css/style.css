@@ -31,7 +31,7 @@ body {
   margin-top:50px;
   height: 200px;
   width: 100%;
-  background-color: rgb(124, 110, 214);
+  background-color: rgb(124, 110, 214, 0.6);
   padding-top: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -65,7 +65,7 @@ body {
   background: rgb(240, 236, 30);
   border-radius: 5%;
   cursor: pointer; 
-  color:white; 
+  color: gray; 
   display: block;
   margin-left: auto;
   margin-right: auto
@@ -174,4 +174,52 @@ body {
   line-height: 200px;
   text-align: center;
   user-select: none; /*テキストを選択させないようにできる*/
+}
+
+/*calendar.php*/
+.calendar-container {
+  height:900px;
+  width:850px;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.calendar-table th,
+.calendar-table td{
+  border: 1px solid #ebeced;
+  padding: 10px;
+}
+
+.calendar-table .header {
+  background-color: #4c586f;
+  color: #fff;
+  font-size: 12px;
+  text-align: left;
+}
+
+.month {
+  text-align: center;
+  width: 100%;
+}
+
+.month a {
+  color: #4a80d6;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.day {
+  height: 100px;
 }

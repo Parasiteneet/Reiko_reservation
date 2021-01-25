@@ -29,14 +29,14 @@ if (!empty($_POST)) {
         setcookie('email', $_POST['email'], time() + (20 * 365 * 24 * 60 * 60));
       }
 
-      header('Location: ../register/thanks.php');
+      header('Location: ../corporate-site/calendar.php');
       exit;
-    } else {
+      } else {
       $error['login'] = 'failed';
     }
-  } else {
+      } else {
     $error['login'] = 'blank';
- }
+    }
 }
 
 ?>
@@ -57,7 +57,7 @@ if (!empty($_POST)) {
       <img id="main-pic" src="../img/bedbug-silhouette.jpg" alt="">
     </div>
     <div class="main-prof">
-      <p>貝沼 麗子のご予約サイトへようこそ。</p>
+      <p>貝沼 れい子のご予約サイトへようこそ。</p>
       <p>My passion is ~~~</p>
       <p>I serve you hospitality ~~~</p>
       <p>You can be consulted whenever you'd like to</p>
@@ -75,7 +75,7 @@ if (!empty($_POST)) {
 
 <main>
   <div class="login-container">
-    <form action="../corporate-site/calendar.php" method="post">
+    <form action="" method="post">
       <label for="index-email" class="label1">メールアドレス</label>      
       <label for="index-pin" class="label2">パスワード</label> 
       <br>     

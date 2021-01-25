@@ -1,6 +1,16 @@
 <?php 
+  session_start();
+
+  if(!isset($_SERVER['HTTP_REFERER'])){
+    // redirect them to your desired location
+    header('location:../register/index.php');
+    exit;
+    //https://www.it-swarm-ja.tech/ja/php/php%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%B8%E3%81%AE%E7%9B%B4%E6%8E%A5url%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%82%92%E9%98%B2%E6%AD%A2%E3%81%99%E3%82%8B/1056077947/ 参照:
+}
+  
   require 'vendor/autoload.php';
   use Carbon\Carbon;
+
 
   function h($s) {
     return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
@@ -15,14 +25,14 @@
   } else {
     $dt = Carbon::createFromDate();
   }
-  renderCalendar($dt);
+  // renderCalendar($dt);
 
   //それをファンクションにする
   function renderCalendar($dt) {
     $dt->startOfMonth(); // 今月の最初の日を取得
     $dt->timezone = 'Asia/Tokyo';
     // echo $dt;
-  }
+  
 
   //１ヶ月前取得する
   $sub = Carbon::createFromDate($dt->year,$dt->month,$dt->day);
@@ -36,21 +46,32 @@
   $addY = $addMonth->year;
   $addM = $addMonth->month;
 
+   //今月
+   $today = Carbon::createFromDate();
+   $todayY = $today->year;
+   $todayM = $today->month;
+
+
   //前月・来月のリンク 取得した上の二つをパラメータに打ち込む
  //リンク
-  $title = '<caption><a href="./calendar.php?y='.$subY.'&&m='.$subM.'"><<前月 </a>';//前月のリンク
-  $title .= $dt->format('F Y');//月と年を表示
-  $title .= '<a href="./calendar.php?y='.$addY.'&&m='.$addM.'"> 来月>></a></caption>';//来月リンク  
+  // $title = '<caption><a href="./calendar.php?y='.$subY.'&&m='.$subM.'"><<前月 </a>';//前月のリンク
+  // $title .= $dt->format('F Y');//月と年を表示
+  // $title .= '<a href="./calendar.php?y='.$addY.'&&m='.$addM.'"> 来月>></a></caption>';//来月リンク  
+
+  $title  = '<h4>'.$dt->format('F Y').'</h4>';//月と年を表示
+  $title .= '<div class="month"><caption><a class="left" href="./calendar.php?y='.$todayY.'&&m='.$todayM.'">今月</a>';
+  $title .= '<a class="left" href="./calendar.php?y='.$subY.'&&m='.$subM.'"><<前月 </a>';//前月のリンク
+  $title .= '<a class="right" href="./calendar.php?y='.$addY.'&&m='.$addM.'"> 来月>></a></caption></div>';//来月リンク
 
 
   //<table> と<thead> で曜日をぶちこむ
   $headings = array(
-    'Monday','Tuesday','Wednesday','Thursday',
-    'Friday','Saterday', 'Sunday'
+    '月','火','水','木','金','土','日'
   );
 
 
-  $calendar = '<table class = "table" border=1>';
+  // $calendar = '<table class = "table" border=1>';//後でcssで調整する
+  $calendar = '<table class="calendar-table">';
   $calendar .='<thead>'; // .=は連結 <table> + <thead>
   foreach($headings as $heading) {
     $calendar .='<th class="header">'.$heading.'</th>';
@@ -75,7 +96,28 @@
       $calendar .='</tr><tr>'; //月曜日だったら改行する。条件分岐
     }
 
-    $calendar .='<td class="day">'.$dt->day.'</td>';
+    $comp = new Carbon($dt->year."-".$dt->month."-".$dt->day);
+    $comp_now = Carbon::today();
+
+    //eq()二つの日時が同じかをチェックできる。
+    if($comp->eq($comp_now)) {
+      $calendar .='<td class="day" style="background-color:008b8b;"><a href="reserve.php?y='.$dt->year.'&&m='.$dt->month.'&&d='.$dt->day.'">'.$dt->day.'</a></td>';
+     } else {
+       switch ($dt->format('N')) {
+         case 6://format('N')で取得した土曜日
+           $calendar .='<td class = "day" style="background-color:#b0c0e6"><a href="./reserve.php?y='.$dt->year.'&&m='.$dt->month.'&&d='.$dt->day.'">'.$dt->day.'</a></td>';
+           break;
+         case 7://format('N')で取得した日曜日
+           $calendar .='<td class = "day" style="background-color:#f08080"><a href="./reserve.php?y='.$dt->year.'&&m='.$dt->month.'&&d='.$dt->day.'">'.$dt->day.'</a></td>';
+           break;
+         default:
+           $calendar .='<td class = "day"><a href="./reserve.php?y='.$dt->year.'&&m='.$dt->month.'&&d='.$dt->day.'">'.$dt->day.'</a></td>';;
+           break;
+       }
+     }
+
+
+    // $calendar .='<td class="day">'.$dt->day.'</td>';
     $dt->addDay();//次の日を取得する
   }
 
@@ -83,7 +125,26 @@
 
   $calendar .='</table>';
 
-  echo $title.$calendar;
+  // echo $title.$calendar;
+  return $title.$calendar;
+  }
 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カレンダー</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="calendar-container">
+    <?php echo renderCalendar($dt); ?>
+</div>
+  
+</body>
+</html>
