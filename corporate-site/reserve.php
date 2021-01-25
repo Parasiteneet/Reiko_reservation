@@ -41,7 +41,7 @@ $d = isset($_GET['d'])? h($_GET['d']) : '';
           <label for="reserveDate"></label>
           <input type="text" class="form-control" id="reserveDate" value="<?php echo $y;?>年<?php echo $m; ?>月<?php echo $d; ?>日" disabled="disabled">
           <!--予約日時を送る-->
-          <input type="hidden" name="reserve_date" value="<?php echo $y; ?>-<?php echo $m; ?>-<?php echo $d; ?>"> 
+          <input type="hidden" name="reservation_date" value="<?php echo $y; ?>-<?php echo $m; ?>-<?php echo $d; ?>"> 
       </div>
       <div class="form-group">
           <label for="name">氏名 *</label>

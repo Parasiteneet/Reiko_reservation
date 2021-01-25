@@ -13,29 +13,67 @@ function h($s) {
 }
 
 
-$reserve_date = isset($_POST['reserve_date'])? h($_POST['reserve_date']):'';
+$reservation_date = isset($_POST['reservation_date'])? h($_POST['reservation_date']):'';
 $name = isset($_POST['name'])? h($_POST['name']):'';
 $tel = isset($_POST['tel'])? h($_POST['tel']):'';
 
 if(!empty($_POST)) {
-  $stmt = $db->prepare("INSERT INTO reservations (
-          reserve_date,
-          name.
+  $stmt = $db->prepare("INSERT INTO reservations(
+          reservation_date,
+          name,
           tel,
           created_at,
           updated_at
-  )values(
-          :reserve_date,
+        )values(
+          :reservation_date,
           :name,
           :tel,
           now(),
           now()
-      )");
+        )");
     
-  $stmt->bindParam(":reserve_date",$reserve_date);
+  $stmt->bindParam(":reservation_date",$reservation_date);
   $stmt->bindParam(":name",$name);
   $stmt->bindParam(":tel",$tel);
-  $stmt->execute();
+  $success = $stmt->execute();
+
+
+    if($success === true) {
+      // メール自動送信 refferd to 
+      //https://dezanari.com/mamp-mail/
+      //https://ueqareer.net/2721#i-2
+
+        $header = null;
+        $auto_reply_subject = null;
+        $auto_reply_text = null;
+        date_default_timezone_set('Asia/Tokyo');
+        mb_language("Japanese");
+        mb_internal_encoding("UTF-8");
+
+        $header = "MIME-Version: 1.0\n";
+        $header .= "From: Pragin <wumabeatboxer@gmail.com>\n";
+        $header .= "Reply-To: Pragin <wumabeatboxer@gmail.com>\n";
+
+        $admin_reply_subject = null;
+        $admin_reply_text = null;
+
+        $admin_reply_subject = "予約を受け付けました";
+      
+        // 本文を設定
+        $admin_reply_text = "下記の内容でお問い合わせがありました。\n\n";
+        $admin_reply_text .= "予約日時：" . $_POST['reservation_date'] . "\n";
+        $admin_reply_text .= "氏名：" . $_POST['name'] . "\n";
+        $admin_reply_text .= "電話番号：" . $_POST['tel'] . "\n\n";
+
+        // 運営側へメール送信
+        if(mb_send_mail( 'wumabeatboxer@yahoo.co.jp', $admin_reply_subject, $admin_reply_text,$header)) {
+          echo "it succeeded";
+        }else{
+          echo "it not";
+        }
+    }else{
+        echo 'DBに渡せてないよ。。。';
+    }
 }
 
 
